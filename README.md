@@ -30,7 +30,7 @@ Three questions will guide the future marketing program:
 Moreno has assigned me the first question to answer: How do annual members and casual riders use Cyclistic bikes differently?
 ## Prepare
 ### Data Source
-I will use Fitness Tracker data to analyze and identify trends, which can be downloaded from [Fitness Tracker]([https://www.kaggle.com/datasets/arashnic/fitbit]).
+I will use Fitness Tracker data to analyze and identify trends, which can be downloaded from [Fitness Tracker](https://www.kaggle.com/datasets/arashnic/fitbit).
 This Kaggle data set contains a personal fitness tracker from Fitbit users. These eligible Fitbit users consented to the submission of personal tracker data, including minute-level output for physical activity, heart rate, and sleep monitoring. It includes information about daily activity, steps, and heart rate that can be used to explore users’ habits.
 ## Process
 BigQuery is used to combine the various datasets into one dataset and clean it.    
