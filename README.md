@@ -22,18 +22,25 @@ I am a junior data analyst working on the marketing analyst team at Bellabeat, a
 ### Business Task
 Devise marketing strategies to convert casual riders to members.
 ### Analysis Questions
-Three questions will guide the future marketing program:  
-1. How do annual members and casual riders use Cyclistic bikes differently?  
-2. Why would casual riders buy Cyclistic annual memberships?  
-3. How can Cyclistic use digital media to influence casual riders to become members?  
+Three questions I'd like to know from this analysis:
+* What are some trends in smart device usage?
 
-Moreno has assigned me the first question to answer: How do annual members and casual riders use Cyclistic bikes differently?
+* How could these trends apply to Bellabeat customers?
+
+* How could these trends help influence Bellabeat's marketing strategy?
+
 ## Prepare
 ### Data Source
 I will use Fitness Tracker data to analyze and identify trends, which can be downloaded from [Fitness Tracker](https://www.kaggle.com/datasets/arashnic/fitbit).
 This Kaggle data set contains a personal fitness tracker from Fitbit users. These eligible Fitbit users consented to the submission of personal tracker data, including minute-level output for physical activity, heart rate, and sleep monitoring. It includes information about daily activity, steps, and heart rate that can be used to explore users’ habits.
 ## Process
-BigQuery is used to combine the various datasets into one dataset and clean it.    
+* Tools I choose in this stage: Excel for checking duplicate data. SQL for merging data.
+
+* Purpose for analysis: Understand the relationship between Calories, Activity, Sleep and Steps.
+
+Files I use:
+dailyActivity_merged
+dailyCalories_merged
 ### Combining the Data
 SQL Query: [Data Combining](https://github.com/SomiaNasir/Google-Data-Analytics-Capstone-Cyclistic-Case-Study/blob/main/01.%20Data%20Combining.sql)  
 12 csv files are uploaded as tables in the dataset '2022_tripdata'. Another table named "combined_data" is created, containing 5,667,717 rows of data for the entire year. 
