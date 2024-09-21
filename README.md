@@ -42,19 +42,20 @@ Files I use:
 dailyActivity_merged
 dailyCalories_merged
 ### Data Cleaning
-SQL Query: [Data Cleaning](https://github.com/SomiaNasir/Google-Data-Analytics-Capstone-Cyclistic-Case-Study/blob/main/03.%20Data%20Cleaning.sql)  
-1. All the rows having missing values are deleted.  
-2. 3 more columns ride_length for duration of the trip, day_of_week and month are added.  
-3. Trips with duration less than a minute and longer than a day are excluded.
-4. Total 1,375,912 rows are removed in this step.
-  
+SQL Query: [Data Cleaning](   
+![image](https://user-images.githubusercontent.com/125132307/226692931-ecd2eb32-ffce-481a-b3c2-a6c3b4f3ceb7.png)
+
 ## Analyze and Share
 SQL Query: [Data Analysis](https://github.com/SomiaNasir/Google-Data-Analytics-Capstone-Cyclistic-Case-Study/blob/main/04.%20Data%20Analysis.sql)  
 Data Visualization: [Tableau](https://public.tableau.com/app/profile/somia.nasir/viz/bike-tripdata-casestudy/Dashboard1#1)  
-The data is stored appropriately and is now prepared for analysis. I queried multiple relevant tables for the analysis and visualized them in Tableau.  
-The analysis question is: How do annual members and casual riders use Cyclistic bikes differently?  
-
-First of all, member and casual riders are compared by the type of bikes they are using.  
+After cleaning the data, I can start to analyze the data to gain insights and creating charts to let shareholders understand the results.
+- Tools I use: SQL for analysis, Tableau for creating charts
+- Purpose for analysis:
+1. The user type based on calories consumption
+2. Confirm if users with low activity level have fewer total steps
+3. Confirm if users with low activity level have fewer active minutes
+4. Device usage
+5. Sleep efficiency
 
 ![image](https://user-images.githubusercontent.com/125132307/226692931-ecd2eb32-ffce-481a-b3c2-a6c3b4f3ceb7.png)
   
