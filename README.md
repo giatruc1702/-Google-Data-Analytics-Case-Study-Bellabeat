@@ -43,7 +43,8 @@ dailyActivity_merged
 dailyCalories_merged
 ### Data Cleaning
 SQL Query: [Data Cleaning](   
-![image]([https://user-images.githubusercontent.com/125132307/226692931-ecd2eb32-ffce-481a-b3c2-a6c3b4f3ceb7.png](https://github.com/giatruc1702/-Google-Data-Analytics-Case-Study-Bellabeat/issues/1#issue-2539931743))
+![duplicate_data](https://github.com/user-attachments/assets/ffad9099-5f17-440b-bfe2-439d41c436ea)
+
 
 ## Analyze and Share
 SQL Query: [Data Analysis](https://github.com/SomiaNasir/Google-Data-Analytics-Capstone-Cyclistic-Case-Study/blob/main/04.%20Data%20Analysis.sql)  
