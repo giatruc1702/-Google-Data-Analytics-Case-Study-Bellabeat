@@ -6,7 +6,7 @@ In this case study, I will perform many real-world tasks as a junior data analys
 SQL Queries:  
 [01. Data Combining](https://github.com/SomiaNasir/Google-Data-Analytics-Capstone-Cyclistic-Case-Study/blob/main/01.%20Data%20Combining.sql)  
 [02. Data Exploration](https://github.com/SomiaNasir/Google-Data-Analytics-Capstone-Cyclistic-Case-Study/blob/main/02.%20Data%20Exploration.sql)  
-[03. Data Cleaning](https://github.com/SomiaNasir/Google-Data-Analytics-Capstone-Cyclistic-Case-Study/blob/main/03.%20Data%20Cleaning.sql)  
+[03. Data Cleaning](https://github.com/giatruc1702/-Google-Data-Analytics-Case-Study-Bellabeat/blob/main/clean_data.sql)  
 [04. Data Analysis](https://github.com/SomiaNasir/Google-Data-Analytics-Capstone-Cyclistic-Case-Study/blob/main/04.%20Data%20Analysis.sql)  
   
 Data Visualizations: [Tableau](https://public.tableau.com/app/profile/somia.nasir/viz/bike-tripdata-casestudy/Dashboard1#1)  
