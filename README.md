@@ -37,12 +37,15 @@ This Kaggle data set contains a personal fitness tracker from Fitbit users. Thes
 * Tools I choose in this stage: Excel for checking duplicate data. SQL for merging data.
 
 * Purpose for analysis: Understand the relationship between Calories and Activity.
-
 Files I use:
 dailyActivity_merged
+
 dailyCalories_merged
 ### Data Cleaning
-SQL Query: [Data Cleaning](https://github.com/user-attachments/assets/ffad9099-5f17-440b-bfe2-439d41c436ea)
+SQL Query: [Data Cleaning]
+
+*Clean the duplicate data
+![image](https://github.com/user-attachments/assets/ffad9099-5f17-440b-bfe2-439d41c436ea)
 
 
 ## Analyze and Share
@@ -51,13 +54,12 @@ Data Visualization: [Tableau](https://public.tableau.com/app/profile/somia.nasir
 After cleaning the data, I can start to analyze the data to gain insights and creating charts to let shareholders understand the results.
 - Tools I use: SQL for analysis, Tableau for creating charts
 - Purpose for analysis:
-1. The user type based on calories consumption
-2. Confirm if users with low activity level have fewer total steps
-3. Confirm if users with low activity level have fewer active minutes
+1. Calories consumption from users
+2. Calories comsumption and Total Steps from users
+3. Calories comsumption and Active Minutes from users
 4. Device usage
-5. Sleep efficiency
 
-![image](https://user-images.githubusercontent.com/125132307/226692931-ecd2eb32-ffce-481a-b3c2-a6c3b4f3ceb7.png)
+*1. Calories consumption from users
   
 The members make 59.7% of the total while remaining 40.3% constitutes casual riders. Each bike type chart shows percentage from the total. Most used bike is classic bike followed by the electric bike. Docked bikes are used the least by only casual riders. 
   
