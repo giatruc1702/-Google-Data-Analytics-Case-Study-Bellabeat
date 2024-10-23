@@ -37,14 +37,13 @@ This Kaggle data set contains a personal fitness tracker from Fitbit users. Thes
 * Tools I choose in this stage: Excel for checking duplicate data. SQL for merging data.
 
 * Purpose for analysis: Understand the relationship between Calories and Activity.
-Files I use:
-dailyActivity_merged
 
-dailyCalories_merged
+* Files I use: dailyActivity_merged and dailyCalories_merged
+
 ### Data Cleaning
 SQL Query: [Data Cleaning]
 
-*Clean the duplicate data
+* Clean the duplicate data
 ![image](https://github.com/user-attachments/assets/ffad9099-5f17-440b-bfe2-439d41c436ea)
 
 
@@ -52,19 +51,24 @@ SQL Query: [Data Cleaning]
 SQL Query: [Data Analysis](https://github.com/SomiaNasir/Google-Data-Analytics-Capstone-Cyclistic-Case-Study/blob/main/04.%20Data%20Analysis.sql)  
 Data Visualization: [Tableau](https://public.tableau.com/app/profile/somia.nasir/viz/bike-tripdata-casestudy/Dashboard1#1)  
 After cleaning the data, I can start to analyze the data to gain insights and creating charts to let shareholders understand the results.
-- Tools I use: SQL for analysis, Tableau for creating charts
-- Purpose for analysis:
+
+Tools I use: SQL for analysis, Tableau for creating charts.
+
+Purpose for analysis:
 1. Calories consumption from users
 2. Calories comsumption and Total Steps from users
 3. Calories comsumption and Active Minutes from users
 4. Device usage
 
-*1. Calories consumption from users
-  
-The members make 59.7% of the total while remaining 40.3% constitutes casual riders. Each bike type chart shows percentage from the total. Most used bike is classic bike followed by the electric bike. Docked bikes are used the least by only casual riders. 
-  
-Next the number of trips distributed by the months, days of the week and hours of the day are examined.  
-  
+### 1. Calories consumption from users
+I would like to know the percentage of users at each activity level. With this data, we can identify the percentage of inactive users. This will help us implement initiatives aimed at encouraging them to become more active or increase their physical activity.
+Adult Daily Calorie Requirement Range:
+| Active Level  | Calories Comsumptiomn |
+| :------------- | :-------------: |
+| Inactive  | <2000  |
+| Moderately Inactive  | 2000~2200  |
+| Active  | >2200 |
+
 ![image](https://user-images.githubusercontent.com/125132307/230122705-2f157258-e673-4fc5-bbed-88050b6aae68.png)
 ![image](https://user-images.githubusercontent.com/125132307/230122935-8d0889c3-f0ff-43ce-94ab-393f2e230bee.png)
   
