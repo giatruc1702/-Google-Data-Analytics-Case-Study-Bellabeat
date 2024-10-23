@@ -42,8 +42,7 @@ Files I use:
 dailyActivity_merged
 dailyCalories_merged
 ### Data Cleaning
-SQL Query: [Data Cleaning](   
-![duplicate_data](https://github.com/user-attachments/assets/ffad9099-5f17-440b-bfe2-439d41c436ea)
+SQL Query: [Data Cleaning](https://github.com/user-attachments/assets/ffad9099-5f17-440b-bfe2-439d41c436ea)
 
 
 ## Analyze and Share
