@@ -126,6 +126,7 @@ SELECT
 GROUP BY User_Activity_Level,Number_of_Users;
 ```
 #### Query result:
+![1](https://github.com/user-attachments/assets/fcc5bc1e-8db0-4bcd-ba8f-14ea978fbe8b)
 
 ### 2. Calories comsumption and Total Steps from users
 Based on the results from section 1, I would like to understand the factors contributing to user inactivity. To start, I will examine the relationship between TotalSteps and Calories.
@@ -145,6 +146,7 @@ SELECT
   FROM `BellaBeat.Daily_Activity_Clone`;
 ```
 #### Query result:
+![2](https://github.com/user-attachments/assets/c2c9cf48-a337-466f-8ee8-c1ea709e0ca1)
 
 ### 3. Calories comsumption and Active Minutes from users
 ```ruby
@@ -163,6 +165,7 @@ SELECT
 ```
 
 #### Query result:
+![3](https://github.com/user-attachments/assets/dca7f2a0-12fe-47e5-96d2-d01fbf7e7faf)
 
 ### 4. Device usage
 ```ruby
@@ -187,6 +190,7 @@ SELECT
 ```
 
 #### Query result:
+![4](https://github.com/user-attachments/assets/bf76e8f3-d5e6-45d8-a8a3-186d42e5cdeb)
 
 
 
