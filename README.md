@@ -43,9 +43,42 @@ This Kaggle data set contains a personal fitness tracker from Fitbit users. Thes
 ### Data Cleaning
 SQL Query: [Data Cleaning]
 
-* Clean the duplicate data
+```ruby
+-- first thing we want to do is create a clone table. In case something happens, we still have the data
+CREATE TABLE IF NOT EXISTS
+BellaBeat.Daily_Activity_Clone
+CLONE `BellaBeat.Daily_Activity`;
+
+INSERT BellaBeat.Daily_Activity_Clone
+SELECT * FROM `BellaBeat.Daily_Activity`;
+DROP TABLE IF EXISTS  `BellaBeat.Daily_Activity_Clone`;
+
+-- find duplicate data from daily actitivy clone table
+SELECT 
+    Id,ActivityDate,TotalSteps,TotalDistance, TrackerDistance,LoggedActivitiesDistance, VeryActiveDistance,ModeratelyActiveDistance,LightActiveDistance,SedentaryActiveDistance,VeryActiveMinutes,FairlyActiveMinutes,LightlyActiveMinutes,SedentaryMinutes,Calories,
+    COUNT(*) AS duplicate_count
+FROM 
+    `BellaBeat.Daily_Activity`
+GROUP BY 
+    Id,ActivityDate,TotalSteps,TotalDistance, TrackerDistance,LoggedActivitiesDistance, VeryActiveDistance,ModeratelyActiveDistance,LightActiveDistance,SedentaryActiveDistance,VeryActiveMinutes,FairlyActiveMinutes,LightlyActiveMinutes,SedentaryMinutes, Calories
+HAVING 
+    COUNT(*) > 1;
+```
+#### Query result of duplicate data:
+
 ![image](https://github.com/user-attachments/assets/ffad9099-5f17-440b-bfe2-439d41c436ea)
 
+```ruby
+--Clean duplicate data
+DELETE FROM `BellaBeat.Daily_Activity`
+WHERE id = 1644430081 
+AND ActivityDate = '2016-04-02' 
+AND TotalSteps = 20237 
+AND TotalDistance = 14.710000038147 
+AND TrackerDistance = 14.710000038147 
+AND VeryActiveMinutes = 34 
+AND Calories = 4029;
+```
 
 ## Analyze and Share
 SQL Query: [Data Analysis](https://github.com/SomiaNasir/Google-Data-Analytics-Capstone-Cyclistic-Case-Study/blob/main/04.%20Data%20Analysis.sql)  
@@ -68,43 +101,102 @@ Adult Daily Calorie Requirement Range:
 | Inactive  | <2000  |
 | Moderately Inactive  | 2000~2200  |
 | Active  | >2200 |
+```ruby
+--Filter out users with Calories
+SELECT 
+      User_Activity_Level,
+      Number_of_Users,
+      CONCAT(ROUND(((Number_of_users)/(sum(Number_of_users) OVER())*100),2),'%') AS Percentage
+  FROM (
+        SELECT
+              CASE WHEN AVG_Calories < 2000 Then "Inactive"
+                   WHEN  AVG_Calories BETWEEN 2000 AND 2200 Then "Moderately active"
+                    ELSE "Active"
+              END AS User_Activity_Level,
+              COUNT (*) AS Number_of_Users,
+          FROM (
+                  SELECT 
+                        Id,
+                        ROUND(AVG(Calories),0) AS AVG_Calories
+                    FROM `BellaBeat.Daily_Activity_Clone`
+                  GROUP BY Id
+              ) t
+          GROUP BY User_Activity_Level
+       ) 
+GROUP BY User_Activity_Level,Number_of_Users;
+```
+#### Query result:
 
-![image](https://user-images.githubusercontent.com/125132307/230122705-2f157258-e673-4fc5-bbed-88050b6aae68.png)
-![image](https://user-images.githubusercontent.com/125132307/230122935-8d0889c3-f0ff-43ce-94ab-393f2e230bee.png)
-  
-__Months:__ When it comes to monthly trips, both casual and members exhibit comparable behavior, with more trips in the spring and summer and fewer in the winter. The gap between casuals and members is closest in the month of july in summmer.   
-__Days of Week:__ When the days of the week are compared, it is discovered that casual riders make more journeys on the weekends while members show a decline over the weekend in contrast to the other days of the week.  
-__Hours of the Day:__ The members shows 2 peaks throughout the day in terms of number of trips. One is early in the morning at around 6 am to 8 am and other is in the evening at around 4 pm to 8 pm while number of trips for casual riders increase consistently over the day till evening and then decrease afterwards.  
-  
-We can infer from the previous observations that member may be using bikes for commuting to and from the work in the week days while casual riders are using bikes throughout the day, more frequently over the weekends for leisure purposes. Both are most active in summer and spring.  
-  
-Ride duration of the trips are compared to find the differences in the behavior of casual and member riders.  
-  
-![image](https://user-images.githubusercontent.com/125132307/230164787-3ea46ee9-aa5f-486b-9dd1-8f43dfce8e1c.png)  
-![image](https://user-images.githubusercontent.com/125132307/230164889-1c7943d2-7ada-411b-adc7-a043eb480ba1.png)
-  
-Take note that casual riders tend to cycle longer than members do on average. The length of the average journey for members doesn't change throughout the year, week, or day. However, there are variations in how long casual riders cycle. In the spring and summer, on weekends, and from 10 am to 2 pm during the day, they travel greater distances. Between five and eight in the morning, they have brief trips.
-  
-These findings lead to the conclusion that casual commuters travel longer (approximately 2x more) but less frequently than members. They make longer journeys on weekends and during the day outside of commuting hours and in spring and summer season, so they might be doing so for recreation purposes.    
-  
-To further understand the differences in casual and member riders, locations of starting and ending stations can be analysed. Stations with the most trips are considered using filters to draw out the following conclusions.  
-  
-![image](https://user-images.githubusercontent.com/125132307/230248445-3fe69cbb-30a9-42c6-b5e8-ab433a620ff3.png)  
-  
-Casual riders have frequently started their trips from the stations in vicinity of museums, parks, beach, harbor points and aquarium while members have begun their journeys from stations close to universities, residential areas, restaurants, hospitals, grocery stores, theatre, schools, banks, factories, train stations, parks and plazas.  
-  
-![image](https://user-images.githubusercontent.com/125132307/230253219-4fb8a2ed-95e3-4e52-a359-9d86945b7a75.png)
-  
-Similar trend can be observed in ending station locations. Casual riders end their journay near parks, museums and other recreational sites whereas members end their trips close to universities, residential and commmercial areas. So this proves that casual riders use bikes for leisure activities while members extensively rely on them for daily commute.  
-  
-Summary:
-  
-|Casual|Member|
-|------|------|
-|Prefer using bikes throughout the day, more frequently over the weekends in summer and spring for leisure activities.|Prefer riding bikes on week days during commute hours (8 am / 5pm) in summer and spring.|
-|Travel 2 times longer but less frequently than members.|Travel more frequently but shorter rides (approximately half of casual riders' trip duration).|
-|Start and end their journeys near parks, museums, along the coast and other recreational sites.|Start and end their trips close to universities, residential and commercial areas.|  
-  
+### 2. Calories comsumption and Total Steps from users
+Based on the results from section 1, I would like to understand the factors contributing to user inactivity. To start, I will examine the relationship between TotalSteps and Calories.
+I retrieved the TotalSteps and Calories data, and included the User_Activity_Level from the dailyActivity dataset using SQL.
+The SQL code for this process is provided in the block below:
+```ruby
+-- Filter out users with Calories and TotalSteps
+SELECT 
+      Id,
+      TotalSteps,
+      TotalDistance,
+      Calories,
+      CASE WHEN Calories < 2000 OR TotalSteps < 5000 Then "Inactive" 
+           WHEN Calories BETWEEN 2000 AND 2200 OR TotalSteps BETWEEN 5000 AND 9000 Then "Moderately active"
+           WHEN Calories > 2200 OR TotalSteps > 10000 Then "Active"
+       END AS User_Activity_Level
+  FROM `BellaBeat.Daily_Activity_Clone`;
+```
+#### Query result:
+
+### 3. Calories comsumption and Active Minutes from users
+```ruby
+--Filter out users with calories and active minutes
+SELECT 
+      Id,
+      ROUND(AVG(((0.8*VeryActiveMinutes)+ (0.6*FairlyActiveMinutes) + (0.4* LightlyActiveMinutes) + (0.2*SedentaryMinutes))),0) AS Active_Minutes,
+      ROUND(AVG(Calories),0) AS AVG_Calories,
+      CASE 
+        WHEN AVG(Calories) < 2000 OR ROUND(AVG(((0.8*VeryActiveMinutes)+ (0.6*FairlyActiveMinutes) + (0.4* LightlyActiveMinutes) + (0.2*SedentaryMinutes))),0) < 260 Then "Inactive"
+        WHEN AVG(Calories) BETWEEN 2000 AND 2200 OR ROUND(AVG(((0.8*VeryActiveMinutes)+ (0.6*FairlyActiveMinutes) + (0.4* LightlyActiveMinutes) + (0.2*SedentaryMinutes))),0) BETWEEN 260 and 300 Then "Moderately active"
+        ELSE "Active"
+       END AS User_Activity_Level
+  FROM `BellaBeat.Daily_Activity_Clone`
+  GROUP BY Id;
+```
+
+#### Query result:
+
+### 4. Device usage
+```ruby
+--Device Usage
+  SELECT 
+     Usage_Category,
+     COUNT(*) AS Days_Used,
+     CONCAT(ROUND((COUNT(*)/(sum(COUNT(*)) OVER())*100),2),'%') AS Percentage
+  FROM (
+        SELECT
+              Id,
+              COUNT(id) AS Days_Used,
+              CASE WHEN COUNT(id) BETWEEN 1 AND 10 THEN "Low usage frequency (1~ 10 days)"
+                   WHEN COUNT(id) BETWEEN 11 AND 20 THEN "Moderate usage frequency (11~ 20 days)"
+                   ELSE "High usage frequency (21~ 30 days)"
+              END Usage_Category
+          FROM `BellaBeat.Daily_Activity_Clone`
+          GROUP BY Id
+       )
+ GROUP BY Usage_Category
+ ORDER BY Days_Used;
+```
+
+#### Query result:
+
+
+
+
+
 ## Act
-After identifying the differences between casual and member riders, marketing strategies to target casual riders can be developed to persuade them to become members.  
-Recommendations:  
+Recommendations:
+
+Based on the User_Activity_Level and active minutes data, 43% of users remain inactive, with slightly lower inactive minutes compared to the other two groups. To improve their health, we can present this data to raise awareness and encourage them to start small, such as taking a 10 to 15-minute walk or excersise daily. Additionally, organizing engaging competitions and activities could motivate all users, especially inactive ones, to participate and increase their activity levels through social interaction and competition. Furthermore, creating a community where users can share progress, challenges, and success stories could foster mutual motivation and support.
+
+From the device usage data, 77% of users use our device for more than 25 days per month, indicating strong engagement. To retain these high-frequency users, we can introduce reward programs or premium features, as well as analyze their behaviors to understand what drives frequent use. For moderate and low-frequency users, we can investigate reasons for less frequent usage and address their needs by enhancing product features, providing more tips, and offering guidance to encourage increased usage.
+
+
