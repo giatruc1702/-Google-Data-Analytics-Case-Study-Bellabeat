@@ -151,6 +151,10 @@ SELECT
 ```
 #### Query result:
 ![2](https://github.com/user-attachments/assets/c2c9cf48-a337-466f-8ee8-c1ea709e0ca1)
+#### Scatter Plot visualization
+<p align="center">
+<img src="https://github.com/user-attachments/assets/9e13e83c-202d-4213-a8c0-3b7f7c9707c4"/>
+</p>
 
 ### 3. Calories comsumption and Active Minutes from users
 ```ruby
