@@ -127,7 +127,11 @@ GROUP BY User_Activity_Level,Number_of_Users;
 ```
 #### Query result:
 ![1](https://github.com/user-attachments/assets/fcc5bc1e-8db0-4bcd-ba8f-14ea978fbe8b)
-
+#### Pie chart visualization
+<p align="center">
+<img src="https://github.com/user-attachments/assets/a5f054cf-b05c-4cd9-802a-16f2112dcc0f"/>
+</p>
+  
 ### 2. Calories comsumption and Total Steps from users
 Based on the results from section 1, I would like to understand the factors contributing to user inactivity. To start, I will examine the relationship between TotalSteps and Calories.
 I retrieved the TotalSteps and Calories data, and included the User_Activity_Level from the dailyActivity dataset using SQL.
