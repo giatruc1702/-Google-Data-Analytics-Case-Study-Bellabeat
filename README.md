@@ -3,13 +3,6 @@ Course: [Google Data Analytics Capstone: Complete a Case Study](https://www.cour
 ## Introduction
 In this case study, I will perform many real-world tasks as a junior data analyst at a high-tech manufacturer of health-focused products for women, Bellabeat. I will follow the steps of the data analysis process: Ask, Prepare, Process, Analyze, Share, and Act to answer the stakeholders' questions.
 
-SQL Queries:  
-[01. Data Combining](https://github.com/SomiaNasir/Google-Data-Analytics-Capstone-Cyclistic-Case-Study/blob/main/01.%20Data%20Combining.sql)  
-[02. Data Exploration](https://github.com/SomiaNasir/Google-Data-Analytics-Capstone-Cyclistic-Case-Study/blob/main/02.%20Data%20Exploration.sql)  
-[03. Data Cleaning](https://github.com/giatruc1702/-Google-Data-Analytics-Case-Study-Bellabeat/blob/main/clean_data.sql)  
-[04. Data Analysis](https://github.com/SomiaNasir/Google-Data-Analytics-Capstone-Cyclistic-Case-Study/blob/main/04.%20Data%20Analysis.sql)  
-  
-Data Visualizations: [Tableau](https://public.tableau.com/app/profile/somia.nasir/viz/bike-tripdata-casestudy/Dashboard1#1)  
 ## Background
 ### Bellabeat
 Urška Sršen and Sando Mur founded Bellabeat, a high-tech company that manufactures health-focused smart products. Sršen used her background as an assist to develop beautifully designed technology that informs and inspires women around the world. Collecting data on activity, sleep, stress, and reproductive health has allowed Bellabeat to empower women with knowledge about their own health and habits. Since it was founded in 2013, Bellabeat has grown rapidly and quickly positioned itself as a tech-driven wellness company for women.
@@ -34,14 +27,14 @@ Three questions I'd like to know from this analysis:
 I will use Fitness Tracker data to analyze and identify trends, which can be downloaded from [Fitness Tracker](https://www.kaggle.com/datasets/arashnic/fitbit).
 This Kaggle data set contains a personal fitness tracker from Fitbit users. These eligible Fitbit users consented to the submission of personal tracker data, including minute-level output for physical activity, heart rate, and sleep monitoring. It includes information about daily activity, steps, and heart rate that can be used to explore users’ habits.
 ## Process Data
-* Tools I choose in this stage: Excel for checking duplicate data. SQL for merging data.
+* Tools I choose in this stage: BigQuery for checking duplicate data and merging data.
 
 * Purpose for analysis: Understand the relationship between Calories and Activity.
 
 * Files I use: dailyActivity_merged and dailyCalories_merged
 
 ### Data Cleaning
-SQL Query: [Data Cleaning]
+SQL Query:
 
 ```ruby
 -- first thing we want to do is create a clone table. In case something happens, we still have the data
@@ -81,11 +74,9 @@ AND Calories = 4029;
 ```
 
 ## Analyze and Share
-SQL Query: [Data Analysis](https://github.com/SomiaNasir/Google-Data-Analytics-Capstone-Cyclistic-Case-Study/blob/main/04.%20Data%20Analysis.sql)  
-Data Visualization: [Tableau](https://public.tableau.com/app/profile/somia.nasir/viz/bike-tripdata-casestudy/Dashboard1#1)  
 After cleaning the data, I can start to analyze the data to gain insights and creating charts to let shareholders understand the results.
 
-Tools I use: SQL for analysis, Tableau for creating charts.
+Tools I use: BigQuery for analysis, Tableau for creating charts.
 
 Purpose for analysis:
 1. Calories consumption from users
@@ -131,7 +122,9 @@ GROUP BY User_Activity_Level,Number_of_Users;
 <p align="center">
 <img src="https://github.com/user-attachments/assets/a5f054cf-b05c-4cd9-802a-16f2112dcc0f"/>
 </p>
-  
+
+Based on the query results and the pie chart, approximately 43% of users are inactive, 20% are moderately active. By Targeting these two groups with encouraging messages could help motivate them to become and remain more active.
+
 ### 2. Calories comsumption and Total Steps from users
 Based on the results from section 1, I would like to understand the factors contributing to user inactivity. To start, I will examine the relationship between TotalSteps and Calories.
 I retrieved the TotalSteps and Calories data, and included the User_Activity_Level from the dailyActivity dataset using SQL.
@@ -156,7 +149,14 @@ SELECT
 <img src="https://github.com/user-attachments/assets/9e13e83c-202d-4213-a8c0-3b7f7c9707c4"/>
 </p>
 
+The scatter chart shows no significant difference in *TotalSteps* among the three user groups. The users are spread across different calorie groups, indicating that step count isn't the cause of higher calorie expenditure. Next, I'll examine whether inactive users have lower active minutes.
+
 ### 3. Calories comsumption and Active Minutes from users
+Based on the results in section 2, I was unable to determine if *TotalSteps* is the primary factor behind low calorie expenditure in inactive users. Therefore, I decided to investigate whether active minutes could be another contributing factor.
+
+To do this, I retrieved *Active_Minutes* and *AVG_Calories* information, adding the *User_Activity_Level* from the *dailyActivity* dataset using SQL. Since there was no direct column to assess active minutes status, I created a new column, *Active_Minutes*, by assigning weights of 0.8, 0.6, 0.4, and 0.2 to the *VeryActiveMinutes*, *FairlyActiveMinutes*, *LightlyActiveMinutes*, and *SedentaryMinutes* columns, respectively.
+
+The SQL code is displayed in the block below:
 ```ruby
 --Filter out users with calories and active minutes
 SELECT 
@@ -179,7 +179,11 @@ SELECT
 <img src="https://github.com/user-attachments/assets/99296f6d-70d9-446b-8433-05839396a797"/>
 </p>
 
+The bar chart clearly shows a relationship between active minutes and activity levels: the more active a person is, the higher their average active minutes, while less active individuals have correspondingly lower active minutes.
+
 ### 4. Device usage
+I'd like to know the device usage of each user and divide them into three groups: 1~10 days, 11~20 days and 21~30 days.
+
 ```ruby
 --Device Usage
   SELECT 
@@ -208,8 +212,7 @@ SELECT
 <img src="https://github.com/user-attachments/assets/557a06ad-3ddd-49b5-8195-2ae13e4912a0"/>
 </p>
 
-
-
+The pie chart indicates that approximately 77% of users use our device for more than 20 days per month, demonstrating a high level of engagement. However, there were only almost 23% of moderate users.
 
 ## Act
 Recommendations:
