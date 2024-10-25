@@ -151,7 +151,7 @@ SELECT
 ```
 #### Query result:
 ![2](https://github.com/user-attachments/assets/c2c9cf48-a337-466f-8ee8-c1ea709e0ca1)
-#### Scatter Plot visualization
+#### Scatter plot visualization
 <p align="center">
 <img src="https://github.com/user-attachments/assets/9e13e83c-202d-4213-a8c0-3b7f7c9707c4"/>
 </p>
@@ -174,6 +174,10 @@ SELECT
 
 #### Query result:
 ![3](https://github.com/user-attachments/assets/dca7f2a0-12fe-47e5-96d2-d01fbf7e7faf)
+#### Bar chart visualization
+<p align="center">
+<img src="https://github.com/user-attachments/assets/99296f6d-70d9-446b-8433-05839396a797"/>
+</p>
 
 ### 4. Device usage
 ```ruby
@@ -199,7 +203,10 @@ SELECT
 
 #### Query result:
 ![4](https://github.com/user-attachments/assets/bf76e8f3-d5e6-45d8-a8a3-186d42e5cdeb)
-
+#### Pie chart visualization
+<p align="center">
+<img src="https://github.com/user-attachments/assets/557a06ad-3ddd-49b5-8195-2ae13e4912a0"/>
+</p>
 
 
 
