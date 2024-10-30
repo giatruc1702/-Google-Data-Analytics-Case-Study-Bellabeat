@@ -176,8 +176,9 @@ SELECT
 ![3](https://github.com/user-attachments/assets/dca7f2a0-12fe-47e5-96d2-d01fbf7e7faf)
 #### Bar chart visualization
 <p align="center">
-<img src="https://github.com/user-attachments/assets/99296f6d-70d9-446b-8433-05839396a797"/>
+<img src="https://github.com/user-attachments/assets/0ad0cca8-d180-45ed-be5e-0d29dca938ed"/>
 </p>
+
 
 The bar chart clearly shows a relationship between active minutes and activity levels: the more active a person is, the higher their average active minutes, while less active individuals have correspondingly lower active minutes.
 
